@@ -1,0 +1,35 @@
+swagger: "2.0"
+info:
+  description: "Demo rest api to deploy on heroku"
+  version: "1.0.0"
+  title: "Test to deploy"
+basePath: "/v1/test/controller"
+tags:
+  - name: "test-to-deploy"
+    description: "endpoints to test"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /phrase:
+    get:
+      tags:
+        - "test-to-deploy"
+      summary: "Return some phrase"
+      operationId: "getPhrase"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/phraseResponse'
+        "500":
+          description: "error at service"
+definitions:
+  phraseResponse:
+    type: object
+    properties:
+      phrase:
+        type: string
+        example: "This is a phrase"

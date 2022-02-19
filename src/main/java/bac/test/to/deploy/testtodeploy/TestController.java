@@ -8,7 +8,7 @@ public class TestController implements PhraseApi{
 
     @Override
     public ResponseEntity<PhraseResponse> getPhrase() {
-        var response = new PhraseResponse();
+        PhraseResponse response = new PhraseResponse();
         return ResponseEntity.ok(response.phrase("Survival is the art of knowing how to swim in uncharted waters :) "));
     }
 }

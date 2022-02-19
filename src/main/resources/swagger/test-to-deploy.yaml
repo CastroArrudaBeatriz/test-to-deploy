@@ -3,7 +3,7 @@ info:
   description: "Demo rest api to deploy on heroku"
   version: "1.0.0"
   title: "Test to deploy"
-basePath: "/v1/test/controller"
+basePath: "/v1/"
 tags:
   - name: "test-to-deploy"
     description: "endpoints to test"
@@ -11,7 +11,7 @@ schemes:
   - "https"
   - "http"
 paths:
-  /phrase:
+  /test/phrase:
     get:
       tags:
         - "test-to-deploy"
@@ -26,10 +26,34 @@ paths:
             $ref: '#/definitions/phraseResponse'
         "500":
           description: "error at service"
+  /test/number:
+    get:
+      tags:
+        - "test-to-deploy"
+      summary: "Return random number"
+      operationId: "getSomeNumber"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "returns some random number"
+          schema:
+            $ref: '#/definitions/numberResponse'
+        "500":
+          description: "error at service"
 definitions:
+
   phraseResponse:
     type: object
     properties:
       phrase:
         type: string
         example: "This is a phrase"
+
+  numberResponse:
+    type: object
+    properties:
+      number:
+        type: number
+        format: double
+        example: 0.17749179125793413
